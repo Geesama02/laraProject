@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Professeur;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,9 @@ class ClubFactory extends Factory
     {
         return [
             //
+            'titre'=> fake()->sentence(1),
+            'type'=> fake()->sentence(1),
+            'professeur_id'=>Professeur::inRandomOrder()->first(),
         ];
     }
 }

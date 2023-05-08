@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nom_francaise');
             $table->string('prenom_arabe');
             $table->string('prenom_francaise');
-            $table->enum('sexe',['homme','femme']);
+            $table->enum('sexe', ['mâle', 'femme']);
             $table->boolean('endecapé')->default(false);
             $table->timestamps();
         });

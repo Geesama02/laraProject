@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Etablissement;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,15 @@ class ProfesseurFactory extends Factory
     {
         return [
             //
+            'ppr'=> fake()->regexify('[0-9]{8}'),
+            'cin'=> fake()->regexify('[A-Z]{2}[0-9]{8}'),
+            'prenom'=> fake()->firstName(),
+            'nom'=> fake()->lastName(),
+            'email'=> fake()->email(),
+            'password'=> fake()->password(),
+            'sexe'=> fake()->randomElement(['mâle', 'femme']),
+            'etablissement_id'=>Etablissement::inRandomOrder()->first(),
+
         ];
     }
 }

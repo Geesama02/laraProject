@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Club;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,11 @@ class ActiveteFactory extends Factory
     {
         return [
             //
+            'titre'=> fake()->jobTitle(),
+            'description'=> fake()->sentence(5),
+            'club_id'=>Club::inRandomOrder()->first(),
+
+
         ];
     }
 }

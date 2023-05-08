@@ -10,7 +10,7 @@ class ProfesseurController extends Controller
     //
     public function index()
     {
-        $professeurs = Professeur::get();
+        $professeurs = Professeur::with('etablissement')->get();
         return view('professeur.index', [
             'professeurs' => $professeurs
         ]);

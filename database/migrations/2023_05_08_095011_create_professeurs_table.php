@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('email',70)->unique();
             $table->string('password',60);
-            $table->string('sexe');
+            $table->enum('sexe', ['mâle', 'femme']);
             $table->foreignId('etablissement_id');
             $table->timestamps();
         });
