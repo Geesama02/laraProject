@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ProfesseurController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -30,4 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/club', [ClubController::class,'index'])->name('club');
+// Route::delete('/clubes/{id}',[ClubController::class,'destroy'])->name('');
 require __DIR__.'/auth.php';
+// Route::delete('/products/{id}',[ProductController::class,'destroy']);

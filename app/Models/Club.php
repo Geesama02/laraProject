@@ -9,7 +9,7 @@ class Club extends Model
 {
     use HasFactory;
     public function professeur(){
-        return $this->belongsTo(Prof::class);
+        return $this->belongsTo(Professeur::class);
     }
 
     public function activite(){

@@ -22,8 +22,6 @@ class ActiveteFactory extends Factory
             'titre'=> fake()->jobTitle(),
             'description'=> fake()->sentence(5),
             'club_id'=>Club::inRandomOrder()->first(),
-
-
         ];
     }
 }
