@@ -11,7 +11,7 @@ class ProfesseurController extends Controller
     //
     public function index()
     {
-        $professeurs = Professeur::with('etablissement')->latest()->get();
+        $professeurs = Professeur::with('etablissement')->latest()->paginate(10);
         return view('professeur.index', [
             'professeurs' => $professeurs
         ]);

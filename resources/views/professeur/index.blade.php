@@ -12,7 +12,6 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="assets/css/argon-dashboard.css" rel="stylesheet" />
     <div class="container-fluid py-4">
-        
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
@@ -30,7 +29,7 @@
                                     <tr>
                                         <th class=" text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             {{ __("PPR") }}</th>
-                                        <th 
+                                        <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             {{ __("Nom et prénom") }}</th>
                                         <th
@@ -57,6 +56,7 @@
                                             Edit
                                         </a></td>
                                         <td class="text-danger"><form method="POST" action="{{ route('professeurs.destroy', $professeur->id)}}">
+
                                             @csrf
                                             @method('DELETE')
                                             <button class="bg-none text-danger font-weight-bold text-xs" style="background-color:transparent; border:none" >
@@ -64,12 +64,8 @@
                                             
                                                 Delete</button>
                                             </form></td>
-                                       
-                                        
-                                        
                                         @endforeach
                                         </tr>
-                                   
                                 </tbody>
                             </table>
                         </div>
@@ -78,4 +74,6 @@
             </div>
         </div>
     </div>
+    {{$professeurs->links()}}
+
 @endsection

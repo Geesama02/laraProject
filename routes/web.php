@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EleveController;
+use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ProfesseurController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -26,10 +27,14 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('professeurs', ProfesseurController::class);
+    Route::resource('club', ClubController::class);
     Route::resource('eleves', EleveController::class);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Route::get('/club', [ClubController::class,'index'])->name('club');
+// Route::delete('/clubes/{id}',[ClubController::class,'destroy'])->name('');
 require __DIR__.'/auth.php';
+// Route::delete('/products/{id}',[ProductController::class,'destroy']);
