@@ -17,10 +17,10 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0 d-flex justify-content-between">
-                        <h6>{{ __("Professeurs List") }}</h6>
-                        <a class="btn btn-outline-primary font-weight-bolder btn-sm mb-2" href="/professeurs/create">
+                        <h6>{{ __("eleves List") }}</h6>
+                        {{-- <a class="btn btn-outline-primary font-weight-bolder btn-sm mb-2" href="/eleves/create">
                             <i class="fas fa-user-plus"></i>
-                            {{__("Ajouter")}}</a>
+                            {{__("Ajouter")}}</a> --}}
                     </div>
                     
                     <div class="card-body px-0 pt-0 pb-2">
@@ -29,46 +29,38 @@
                                 <thead>
                                     <tr>
                                         <th class=" text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            {{ __("PPR") }}</th>
+                                            {{ __("Code Massar") }}</th>
                                         <th 
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             {{ __("Nom et prénom") }}</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            {{ __("Cin") }}</th>
+                                            {{ __("Sexe") }}</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">
                                             {{ __("Etablissement") }}</th>
-                                        <th></th>
-                                        <th></th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">
+                                            {{ __("Endecapé") }}</th>
+                                 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                     @foreach ($professeurs as $professeur)
+                                     @foreach ($eleves as $eleve)
 
                                     <tr>
-                                        <td class="text-center text-sm font-weight-bold mb-0">{{ $professeur->ppr}}</td>
-                                        <td class="text-center text-sm font-weight-bold mb-0">{{ $professeur->nom}} {{ $professeur->prenom}}</td>
-                                        <td class="text-center text-sm font-weight-bold mb-0">{{ $professeur->cin}}</td>
-                                        <td class="text-center text-sm font-weight-bold mb-0">{{ $professeur->etablissement->nom_francaise}}</td>
+                                        <td class="text-center text-sm font-weight-bold mb-0">{{ $eleve->codeMassar}}</td>
+                                        <td class="text-center text-sm font-weight-bold mb-0">{{ $eleve->nom_francaise}} {{ $eleve->prenom_francaise}}</td>
+                                        <td class="text-center text-sm font-weight-bold mb-0">{{ $eleve->sexe}}</td>
+                                        <td class="text-center text-sm font-weight-bold mb-0">{{ $eleve->etablissement->nom_francaise}}</td>
+                                        <td class="text-center text-sm font-weight-bold mb-0">@if ($eleve->endecapé == 1)
+                                            {{"Oui"}}
+                                        @else
+                                            {{"Non"}}
+                                        @endif</td>
                                         
-                                        <td class="text-primary"><a href="{{route('professeurs.edit', $professeur->id)}}" class=" text-primary font-weight-bold text-xs">
-                                            <i class="fas fa-user-edit"></i>
-                                            Edit
-                                        </a></td>
-                                        <td class="text-danger"><form method="POST" action="{{ route('professeurs.destroy', $professeur->id)}}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="bg-none text-danger font-weight-bold text-xs" style="background-color:transparent; border:none" >
-                                                <i class="fas fa-trash-alt"></i>
-                                            
-                                                Delete</button>
-                                            </form></td>
-                                       
-                                        
-                                        
-                                        @endforeach
-                                        </tr>
+                                    </tr>
+                                    @endforeach
                                    
                                 </tbody>
                             </table>

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('code_etablissement');
             $table->string('nom_arabe');
             $table->string('nom_francaise');
-            $table->foreignId('eleve_id');
             $table->timestamps();
         });
     }

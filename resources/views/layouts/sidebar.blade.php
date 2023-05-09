@@ -27,12 +27,12 @@
    
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('dashboard') }}">
+        <a class="nav-link" href="{{ route('professeurs.index') }}">
             <i class="fas fa-user"></i>
           <span>Professeurs</span></a>
       </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('dashboard') }}">
+        <a class="nav-link" href="{{ route('eleves.index') }}">
             <i class="fas fa-graduation-cap"></i>
           <span>Étudiants</span></a>
       </li>

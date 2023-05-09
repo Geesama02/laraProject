@@ -28,8 +28,8 @@ class DatabaseSeeder extends Seeder
                 'name' => 'user',
                 'email' => 'test@example.com',
             ]);
-        Eleve::factory(150)->create();    
         Etablissement::factory(10)->create();   
+        Eleve::factory(150)->create();    
         Professeur::factory(50)->create();    
         Club::factory(50)->create();    
         Activete::factory(50)->create();    

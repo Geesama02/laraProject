@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Etablissement;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,12 +20,14 @@ class EleveFactory extends Factory
         return [
             //
             'codeMassar'=> fake()->regexify('[A-Z]{1}[0-9]{8}'),
-            'nom_arabe'=> fake()->regexify('[A-Z]{2}[0-9]{8}'),
+            'nom_arabe'=> fake()->firstName(),
             'nom_francaise'=> fake()->firstName(),
             'prenom_arabe'=> fake()->lastName(),
-            'prenom_francaise'=> fake()->email(),
+            'prenom_francaise'=> fake()->lastName(),
             'sexe'=> fake()->randomElement(['mâle', 'femme']),
             'endecapé'=> fake()->boolean(),
+            'etablissement_id'=>Etablissement::inRandomOrder()->first(),
+
         ];
     }
 }

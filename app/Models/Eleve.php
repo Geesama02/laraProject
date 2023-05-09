@@ -14,6 +14,6 @@ class Eleve extends Model
     }
 
     public function etablissement(){
-        return $this->belongsTo(Etablissement::class,'activites_eleves');
+        return $this->belongsTo(Etablissement::class,);
     }
 }

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('prenom_francaise');
             $table->enum('sexe', ['mâle', 'femme']);
             $table->boolean('endecapé')->default(false);
+            $table->foreignId('etablissement_id');
             $table->timestamps();
         });
     }
