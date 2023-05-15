@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Eleve extends Model
 {
     use HasFactory;
-    public function activate()
+    public function activetes()
     {
-        return $this->belongsToMany(Activite::class,'');
+        return $this->belongsToMany(Activete::class,'activete_eleve');
     }
 
     public function etablissement(){

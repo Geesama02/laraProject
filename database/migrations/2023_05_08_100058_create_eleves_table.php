@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('nom_francaise');
             $table->string('prenom_arabe');
             $table->string('prenom_francaise');
+            $table->string('niveau_scolaire');
             $table->enum('sexe', ['mâle', 'femme']);
             $table->boolean('endecapé')->default(false);
             $table->foreignId('etablissement_id');

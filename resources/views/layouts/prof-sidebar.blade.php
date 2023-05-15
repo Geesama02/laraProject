@@ -2,10 +2,8 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-      <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
-      </div>
-      <div class="sidebar-brand-text mx-3">Admin</div>
+     
+      <div class="sidebar-brand-text mx-3">Prof Panel</div>
     </a>
 
     <!-- Divider -->
@@ -13,7 +11,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('admin.dashboard.index') }}">
+      <a class="nav-link" href="{{ route('prof.dashboard.index') }}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
@@ -26,20 +24,21 @@
     <!-- Heading -->
 
 
+  
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.professeurs.index') }}">
-            <i class="fas fa-user"></i>
-          <span>Professeurs</span></a>
-      </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.eleves.index') }}">
+        <a class="nav-link" href="{{ route('prof.eleves.index') }}">
             <i class="fas fa-graduation-cap"></i>
           <span>Étudiants</span></a>
       </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.club.index') }}">
+        <a class="nav-link" href="{{ route('prof.clubes.index') }}">
             <i class="fas fa-cubes"></i>
           <span>Clubs</span></a>
+      </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('prof.activetes.index') }}">
+            <i class="fas fa-cube"></i>
+          <span>Activetes</span></a>
       </li>
 
   </ul>

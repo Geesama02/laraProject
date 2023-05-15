@@ -44,6 +44,12 @@ function focused(el) {
     el.parentElement.classList.add('focused');
   }
 }
+$(document).ready(function() {
+  $('.js-example-basic-single').select2();
+});
+$(document).ready(function() {
+  $('.select2').select2();
+});
 
 // when input is focused remove focused class for style
 function defocused(el) {

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Club;
+use App\Models\Etablissement;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +23,8 @@ class ActiveteFactory extends Factory
             'titre'=> fake()->jobTitle(),
             'description'=> fake()->sentence(5),
             'club_id'=>Club::inRandomOrder()->first(),
+            'etablissement_id'=>Etablissement::inRandomOrder()->first(),
+
         ];
     }
 }

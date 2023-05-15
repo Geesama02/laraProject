@@ -22,6 +22,9 @@ class EtablissementFactory extends Factory
             'code_etablissement'=> fake()->numberBetween(10000,99999),
             'nom_arabe'=> fake()->sentence(1),
             'nom_francaise'=> fake()->sentence(1),
+            'niveau'=> fake()->randomElement(['primaire', 'college', 'lycee']),
+            'type'=> fake()->randomElement(['prive', 'public']),
+
 
         ];
     }

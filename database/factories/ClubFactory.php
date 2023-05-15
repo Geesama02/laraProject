@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Activete;
 use App\Models\Professeur;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

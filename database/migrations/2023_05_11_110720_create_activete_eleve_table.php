@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('activetes_eleves', function (Blueprint $table) {
+        Schema::create('activete_eleve', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('activetes_id');
-            $table->foreignId('eleves_id');
+            $table->foreignId('activete_id');
+            $table->foreignId('eleve_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activetes_eleves');
+        Schema::dropIfExists('activete_eleve');
     }
 };

@@ -20,7 +20,9 @@
 {{-- @section('title', 'Dashboard - Laravel Admin Panel With Login and Registration') --}}
  
 @section('contents')
+
   <div class="row">
+    
 
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
@@ -30,7 +32,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 {{ __("Nombre total d'élèves") }}</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">40,000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$eleves}}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-graduation-cap fa-2x text-gray-300"></i>
@@ -47,7 +49,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             {{ __("élèves masculins")}}</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">2150</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$elevesHomme}}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-mars fa-2x text-gray-300"></i>
@@ -66,7 +68,7 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">5000</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$elevesFemme}}</div>
                                 </div>
                                 
                             </div>
@@ -87,7 +89,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 {{__("Étudiants handicapés")}}</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">182</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$elevesEndecapé}}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-wheelchair fa-2x text-gray-300"></i>
@@ -132,34 +134,21 @@
         </div> --}}
 
         <!-- Pie Chart -->
-        <div class="col-xl-4 col-lg-5">
+        <div class="col-xl-6 col-lg-5">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Elèves selon le niveau académique</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Elèves par sexe</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="chart-pie pt-4 pb-2">
-                        <canvas id="myPieChart"></canvas>
-                    </div>
-                    <div class="mt-4 text-center small">
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-primary"></i> Direct
-                        </span>
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-success"></i> Social
-                        </span>
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-info"></i> Referral
-                        </span>
-                    </div>
+                    <canvas id="EleveChart"></canvas>
                 </div>
             </div>
         </div>
         <!-- Pie Chart -->
-        <div class="col-xl-4 col-lg-5">
+        <div class="col-xl-6 col-lg-5">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div
@@ -169,53 +158,62 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="chart-pie pt-4 pb-2">
-                        <canvas id="myPieChart"></canvas>
-                    </div>
-                    <div class="mt-4 text-center small">
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-primary"></i> Direct
-                        </span>
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-success"></i> Social
-                        </span>
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-info"></i> Referral
-                        </span>
-                    </div>
+                    <canvas id="HandecapeChart"></canvas>
                 </div>
             </div>
         </div>
         <!-- Pie Chart -->
-        <div class="col-xl-4 col-lg-5">
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div
-                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Élèves par type d'école</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="chart-pie pt-4 pb-2">
-                        <canvas id="myPieChart"></canvas>
-                    </div>
-                    <div class="mt-4 text-center small">
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-primary"></i> Direct
-                        </span>
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-success"></i> Social
-                        </span>
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-info"></i> Referral
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx2 = document.getElementById('HandecapeChart');
+  const ctx3 = document.getElementById('EleveChart');
+
+  
+  new Chart(ctx3, {
+    type: 'doughnut',
+    data: {
+        labels: [
+    'Femme', 
+    'Male'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [{{$elevesHomme}}, {{$elevesFemme}}],
+    backgroundColor: [
+      'rgb(66,189,207)',
+      'rgb(28,200,138)',
+    ],
+    hoverOffset: 4
+  }]
+    }
+  });
+  new Chart(ctx2, {
+    type: 'doughnut',
+    data: {
+        labels: [
+    'Non Endecapé', 
+    'Endecapé'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [{{$eleves - $elevesEndecapé}}, {{$elevesEndecapé}}],
+    backgroundColor: [
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+    }
+  });
+</script>
 
     <!-- Content Row -->
    
   {{-- </div> --}}
+  
 @endsection
+
+

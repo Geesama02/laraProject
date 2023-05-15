@@ -12,7 +12,7 @@ class Club extends Model
         return $this->belongsTo(Professeur::class);
     }
 
-    public function activite(){
-        return $this->hasMany(Activite::class);
+    public function activetes(){
+        return $this->hasMany(Activete::class);
     }
 }

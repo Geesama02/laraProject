@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('code_etablissement');
             $table->string('nom_arabe');
             $table->string('nom_francaise');
+            $table->enum('niveau', ['primaire', 'college', 'lycee']);
+            $table->enum('type', ['prive', 'public']);
             $table->timestamps();
         });
     }

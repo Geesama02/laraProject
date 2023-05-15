@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('activetes', function (Blueprint $table) {
-            $table->id();
-            $table->string('titre');
-            $table->text('description');
-            $table->foreignId('club_id')->nullable();
-            $table->foreignId('etablissement_id');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            //
+            $table->enum("role",['admin',"prof"])->default('prof');
+            
         });
     }
 
@@ -30,6 +27,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activetes');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };

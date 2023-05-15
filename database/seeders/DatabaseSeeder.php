@@ -25,14 +25,22 @@ class DatabaseSeeder extends Seeder
 
         // \App\Models\
         User::factory()->create([
-                'name' => 'user',
+                'name' => 'Admin',
                 'email' => 'test@example.com',
+                'role' => 'admin',
+            ]);
+        User::factory()->create([
+                'name' => 'Prof',
+                'email' => 'test@prof.com',
+                'role' => 'prof',
             ]);
         Etablissement::factory(10)->create();   
-        Eleve::factory(150)->create();    
+        Eleve::factory(700)->create();    
         Professeur::factory(50)->create();    
         Club::factory(50)->create();    
         Activete::factory(50)->create();    
+
+
 
 
 

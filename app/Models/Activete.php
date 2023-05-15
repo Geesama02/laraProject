@@ -12,9 +12,13 @@ class Activete extends Model
     {
         return $this->belongsTo(Club::class);
     }
-
-    public function eleve()
+    public function etablissement()
     {
-        return $this->belongsToMany(Eleve::class,'activetes_eleves');
+        return $this->belongsTo(Etablissement::class);
+    }
+
+    public function eleves()
+    {
+        return $this->belongsToMany(Eleve::class, 'activete_eleve');
     }
 }
